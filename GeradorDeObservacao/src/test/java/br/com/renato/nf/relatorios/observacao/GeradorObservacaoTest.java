@@ -11,7 +11,6 @@ import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 
 import br.com.renato.nf.relarorios.observacao.GeradorObservacao;
-import br.com.renato.nf.relarorios.observacao.GeradorObservacaoListasDeValores;
 
 public class GeradorObservacaoTest {
 
@@ -44,17 +43,15 @@ public class GeradorObservacaoTest {
 		Assert.assertEquals(observacao, "Fatura da nota fiscal de simples remessa: 1.");
 	}
 	
+	/*
 	@Test
 	public void deveRetornarAObservacaoContendoOValorDaNFEOTotalDasNFs() throws Exception {
 		List<Integer> listaVazia = Arrays.asList();
 		String observacao = geradorObservacao.geraObservacao(listaVazia);
-		Assert.assertEquals(observacao, "Fatura das notas fiscais de simples remessa: 1 cujo valor é R$ 10,00,"
-				                      + " 2 cujo valor é R$ 35,00, 3 cujo valor é R$ 5,00, 4 cujo valor é R$ 1.500,00 e"
-				                      + " 5 cujo valor é R$ 0,30. Total = 1.550,30.");
-//	Texto Inicial
-//	Informacao NF
-//  Texto Finalizacao
-	
+		Assert.assertEquals(observacao, "Fatura das notas fiscais de simples remessa: 1 cujo valor ï¿½ R$ 10,00,"
+				                      + " 2 cujo valor ï¿½ R$ 35,00, 3 cujo valor ï¿½ R$ 5,00, 4 cujo valor ï¿½ R$ 1.500,00 e"
+				                      + " 5 cujo valor ï¿½ R$ 0,30. Total = 1.550,30.");Xt
 	}
+	*/
 	
 }

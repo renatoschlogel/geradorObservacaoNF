@@ -3,22 +3,22 @@ package br.com.renato.nf.relarorios.observacao;
 import java.util.Iterator;
 import java.util.List;
 
-public class GeradorObservacaoListasDeValores { 
+public class GeradorObservacaoListaDados { 
 	
 	private IConteudoGeracaoObservacao conteudoGeracaoObservacao;
 
-	//Textos pré-definidos
+	//Textos prï¿½-definidos
 	private static final String textoInicialUmaNota         = "Fatura da nota fiscal de simples remessa: ";
 	private static final String textoInicialDuasNotasOuMais = "Fatura das notas fiscais de simples remessa: ";
 	
-	public GeradorObservacaoListasDeValores() {
+	public GeradorObservacaoListaDados() {
 	}
 	
-	public GeradorObservacaoListasDeValores(IConteudoGeracaoObservacao dadosGeracaoObservacao) {
+	public GeradorObservacaoListaDados(IConteudoGeracaoObservacao dadosGeracaoObservacao) {
 		this.conteudoGeracaoObservacao = dadosGeracaoObservacao;
 	}
 		
-	//Gera observações, com texto pre-definido, incluindo os números, das notas fiscais, recebidos no parâmetro
+	//Gera observaï¿½ï¿½es, com texto pre-definido, incluindo os nï¿½meros, das notas fiscais, recebidos no parï¿½metro
 	public String geraObservacao(List notasFiscais) {
 		
 		if (!notasFiscais.isEmpty()) {
@@ -27,7 +27,7 @@ public class GeradorObservacaoListasDeValores {
 		return "";		
 	}
 	
-	public String geraObservacao() {
+	public String gerarObservacao() {
 		
 		List<String> listaConteudo = conteudoGeracaoObservacao.listaConteudo();
 		if (listaConteudo == null || listaConteudo.isEmpty()) {
@@ -35,13 +35,35 @@ public class GeradorObservacaoListasDeValores {
 		}
 		
 		String textoInicial = getTextoInicial(listaConteudo);
-		String textoConteudo = getTextoInicial(listaConteudo);
+		String conteudo = getConteudo(listaConteudo);
 		String textoFinal = this.conteudoGeracaoObservacao.textoFinal();
 		
-		return textoInicial + textoConteudo + textoFinal;
+		return textoInicial + conteudo + textoFinal;
 	}
 
-	//Cria observação
+	private String getConteudo(List<String> listaConteudo) {
+		
+		StringBuilder conteudo = new StringBuilder("");
+		
+		for (Iterator<String> iterator = listaConteudo.iterator(); iterator.hasNext();) {
+			String conteudoUnitario = iterator.next();
+			String separador = "";
+			if (conteudo.toString() == null || conteudo.toString().length() <= 0) {
+				separador = "";
+			}
+			else if (iterator.hasNext()) {
+				separador = ", ";
+			}else {
+				separador = " e ";
+			}
+			
+			conteudo.append(separador + conteudoUnitario);
+		}
+		
+		return conteudo.toString();
+	}
+
+	//Cria observaï¿½ï¿½o
 	private String retornaCodigos(List lista) {
 		String texto = getTextoInicial(lista);
 		

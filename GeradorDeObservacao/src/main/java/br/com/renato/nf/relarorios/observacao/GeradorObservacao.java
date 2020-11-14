@@ -9,17 +9,17 @@ public class GeradorObservacao implements IConteudoGeracaoObservacao{
 
 	@Override
 	public String textoInicialPlural() {
-		return "Fatura das notas fiscais de simples remessa";
+		return "Fatura das notas fiscais de simples remessa: ";
 	}
 
 	@Override
 	public String textoInicialSingular() {
-		return "Fatura da nota fiscal de simples remessa";
+		return "Fatura da nota fiscal de simples remessa: ";
 	}
 
 	@Override
 	public List<String> listaConteudo() {
-		return numerosNotas;
+		return this.numerosNotas;
 	}
 	
 	public String geraObservacao(List notasFiscais) {
@@ -29,8 +29,8 @@ public class GeradorObservacao implements IConteudoGeracaoObservacao{
 		}
 		
 		preparaDados(notasFiscais);
-		GeradorObservacaoListasDeValores geradorObservacaoListasDeValores = new GeradorObservacaoListasDeValores(this);
-		return geradorObservacaoListasDeValores.geraObservacao();
+		GeradorObservacaoListaDados geradorObservacaoListaDados = new GeradorObservacaoListaDados(this);
+		return geradorObservacaoListaDados.gerarObservacao();
 	}
 
 	private void preparaDados(List<Integer> notasFiscais) {

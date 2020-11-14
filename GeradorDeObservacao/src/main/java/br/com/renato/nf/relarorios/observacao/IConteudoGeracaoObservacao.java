@@ -11,7 +11,7 @@ public interface IConteudoGeracaoObservacao {
 	public List<String> listaConteudo();
 	
 	public default String textoFinal() {
-		return "";
+		return ".";
 	};
 	
 }
